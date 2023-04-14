@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./main-style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Al-Aqsa HealthCare</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="../index.html">Al-Aqsa Health</a>
+      </div>
+      <ul>
+        <li><a href="./accountHandler.html?method=login">Login</a></li>
+        <li><a href="./accountHandler.html?method=signup">SignUp</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="form-container">
+        <form id="login-form">
+          <h2>Login</h2>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <p class="signup-link">
+            Don't have an account? <a href="#" id="signup-btn">Sign up</a>
+          </p>
+        </form>
+        <form id="signup-form">
+          <h2>Sign up</h2>
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Sign up</button>
+          <p class="login-link">
+            Already have an account? <a href="#" id="login-btn">Login</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Get the login and signup buttons
+      const loginBtn = document.getElementById("login-btn");
+      const signupBtn = document.getElementById("signup-btn");
+
+      // Get the login and signup forms
+      const loginForm = document.getElementById("login-form");
+      const signupForm = document.getElementById("signup-form");
+
+      // Url Parameter
+
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Add click event listener to login button
+      loginBtn.addEventListener("click", () => {
+        // Hide the signup form
+        signupForm.style.display = "none";
+        // Show the login form
+        loginForm.style.display = "block";
+      });
+
+      // Add click event listener to signup button
+      signupBtn.addEventListener("click", () => {
+        // Hide the login form
+        loginForm.style.display = "none";
+        // Show the signup form
+        signupForm.style.display = "block";
+      });
+
+      if (urlParams.get("method") === "login") {
+        // If the method is login, then show the login form
+        loginForm.style.display = "block";
+        // Hide the signup form
+        signupForm.style.display = "none";
+      } else if (urlParams.get("method") === "signup") {
+        // If the method is signup, then show the signup form
+        signupForm.style.display = "block";
+        // Hide the login form
+        loginForm.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
